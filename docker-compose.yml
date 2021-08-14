@@ -661,6 +661,19 @@ services:
       networks:
         - backend
 
+### MEMSQL ############################################
+    memsql:
+      image: memsql/cluster-in-a-box
+      ports:
+        - "${MEMSQL_DB_PORT}:3306"
+        - "${MEMSQL_STUDIO_PORT}:8080"
+      environment:
+        - LICENSE_KEY=${MEMSQL_LICENSE_KEY}
+        - ROOT_PASSWORD=${MEMSQL_ROOT_PASSWORD}
+        - START_AFTER_INIT='Y'
+      networks:
+        - backend
+
 ### ZooKeeper #########################################
     zookeeper:
       build: ./zookeeper
